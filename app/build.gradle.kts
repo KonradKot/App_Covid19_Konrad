@@ -50,6 +50,18 @@ android {
 }
 
 dependencies {
+    /*
+    Sekcja dependencies w pliku build.gradle.kts określa wszystkie biblioteki, których aplikacja
+    potrzebuje do działania. Biblioteki te mogą być bibliotekami standardowymi Androida,
+    bibliotekami innych firm lub bibliotekami utworzonymi przez Ciebie.
+    Na przykład, w powyższym pliku build.gradle.kts sekcja dependencies zawiera następujące biblioteki:
+     */
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")  // standardowa bibliotaka języka Kotlin
+    implementation("androidx.core:core-ktx:1.13.1") // biblioteka rozszerzeń dla podstawowych funkcji Androida
+    implementation("com.android.volley:volley:1.2.1") // biblioteka do obsługi API REST, żądań HTTP
+    implementation("androidx.appcompat:appcompat:1.6.1") // biblioteka zapewniająca obsługe starszych wersji Androida
+    implementation("com.google.android.material:material:1.12.0") // biblioteka zapewniająca komponenty Material Design
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4") // biblioteka zapewniająca obsługe constraint layout
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -59,6 +71,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
