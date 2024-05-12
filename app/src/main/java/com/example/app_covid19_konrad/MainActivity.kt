@@ -13,19 +13,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.app_covid19_konrad.ui.theme.App_Covid19_KonradTheme
 
-class MainActivity : ComponentActivity() {
+import com.example.myproject.Greeting
+
+class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            App_Covid19_KonradTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+        setContentView(R.layout.activity_main)
+
+        val greeting = Greeting()
+        val greetingText = greeting.greet()
+
+        // Display the greeting text on the screen
     }
 }
