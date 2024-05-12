@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp">
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:gravity="center_horizontal"
+                android:padding="3dp"
+                android:text="StateName"
+                android:textAlignment="center"
+                android:textColor="@color/pink_500"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:text="Cases"
+                        android:textAligment="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/yellow"
+                        android:textSize="15sp"
+                        android:textStype="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:text="Number of Cases"
+                        android:id="@+id/idTVWorldCases"
+                        android:textAligment="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/yellow"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:text="Cases"
+                        android:textAligment="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="15sp"
+                        android:textStype="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:text="Number of Recovered"
+                        android:id="@+id/idTVWorldRecovered"
+                        android:textAligment="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:text="Deaths"
+                        android:textAligment="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/red"
+                        android:textSize="15sp"
+                        android:textStype="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="4dp"
+                        android:text="Number of Deaths"
+                        android:id="@+id/idTVWorldDeaths"
+                        android:textAligment="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.cardview.widget.CardView>

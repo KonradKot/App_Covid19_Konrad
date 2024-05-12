@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--Komentarz do pliku manifest.xml
+    Plik manifestu mówi nam o aplikacji i jej konfiguracji.tj.
+    * nazwa aplikacji
+    *Ikona aplikacji
+    *Wersja aplikacji
+    *Uprawnienia wymagane przez aplikacje
+    * Aktywnosc i usługi aplikacji
+    -->
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- zgoda na uzycie internetu zeby pobrac appi -->
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
