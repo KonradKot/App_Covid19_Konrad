@@ -29,19 +29,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello Konradzie co tu robsyyz44444$name!",
-        modifier = modifier
-    )
-}
-xdcd
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    App_Covid19_KonradTheme {
-        Greeting("Android")
-    }
-}
