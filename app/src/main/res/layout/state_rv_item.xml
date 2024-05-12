@@ -116,7 +116,7 @@
                         android:padding="4dp"
                         android:text="Deaths"
                         android:textAligment="center"
-                        android:textAlignment="cesnter"
+                        android:textAlignment="center"
                         android:textColor="@color/red"
                         android:textSize="15sp"
                         android:textStype="bold" />

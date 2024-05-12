@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class StateRVAdapter (private val stateList: List<StateModal>) :RecyclerView.Adapter<StateRVAdapter.StateRVViewHolder>(){
+class StateRVAdapter (private val stateList: List<StateModel>) :RecyclerView.Adapter<StateRVAdapter.StateRVViewHolder>(){
     class StateRVViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val stateNameTV: TextView = itemView.findViewById(R.id.idTVState)
