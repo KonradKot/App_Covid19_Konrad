@@ -51,11 +51,10 @@
                         android:layout_gravity="center_horizontal"
                         android:padding="4dp"
                         android:text="Cases"
-                        android:textAligment="center"
                         android:textAlignment="center"
                         android:textColor="@color/yellow"
                         android:textSize="15sp"
-                        android:textStype="bold" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -64,7 +63,6 @@
                         android:padding="4dp"
                         android:text="Number of Cases"
                         android:id="@+id/idTVCases"
-                        android:textAligment="center"
                         android:textAlignment="center"
                         android:textColor="@color/yellow"
                         android:textSize="12sp" />
@@ -83,11 +81,10 @@
                         android:layout_gravity="center_horizontal"
                         android:padding="4dp"
                         android:text="Cases"
-                        android:textAligment="center"
                         android:textAlignment="center"
                         android:textColor="@color/green"
                         android:textSize="15sp"
-                        android:textStype="bold" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -96,7 +93,6 @@
                         android:padding="4dp"
                         android:text="Number of Recovered"
                         android:id="@+id/idTVRecovered"
-                        android:textAligment="center"
                         android:textAlignment="center"
                         android:textColor="@color/green"
                         android:textSize="12sp" />
@@ -115,11 +111,10 @@
                         android:layout_gravity="center_horizontal"
                         android:padding="4dp"
                         android:text="Deaths"
-                        android:textAligment="center"
                         android:textAlignment="center"
                         android:textColor="@color/red"
                         android:textSize="15sp"
-                        android:textStype="bold" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -128,7 +123,6 @@
                         android:padding="4dp"
                         android:text="Number of Deaths"
                         android:id="@+id/idTVDeaths"
-                        android:textAligment="center"
                         android:textAlignment="center"
                         android:textColor="@color/red"
                         android:textSize="12sp" />
