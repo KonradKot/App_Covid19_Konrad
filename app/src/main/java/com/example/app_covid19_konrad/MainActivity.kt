@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity // dodałem stworzoną klasę, któą zimportowałem w dependencies
+import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -27,8 +29,12 @@ class MainActivity : AppCompatActivity() {
     lateinit var stateRVAdapter: StateRVAdapter
     lateinit var stateList: List<StateModel>
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
         worlCasesTV = findViewById(R.id.idTVWorldCases)
         worldDeathsTV = findViewById(R.id.idTVWorldDeaths)
         worldRecoveredTV = findViewById(R.id.idTVWorldRecovered)
@@ -94,5 +100,14 @@ class MainActivity : AppCompatActivity() {
         //???
     }
      */
+
+    override fun onStop() {
+        super.onStop()
+        // Zapisz dane do bazy danych lub pliku
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // Zwolnij zasoby, takie jak wątki lub połączenia sieciowe
+    }
 
 }
