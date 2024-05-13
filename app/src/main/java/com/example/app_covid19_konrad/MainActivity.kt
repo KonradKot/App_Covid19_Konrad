@@ -87,9 +87,12 @@ class MainActivity : AppCompatActivity() {
             })
         queue.add(request)
     }
+    /*
     private fun getWorldInfo() // podobnie jak powyżej uzupełnić funkcje (poszukuje odpowiedniego Api)
     {
         val url = "https://corona.lmao.ninja/v3/covid-19/all"
         //???
     }
+     */
+
 }

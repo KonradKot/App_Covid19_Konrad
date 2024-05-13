@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">App_Covid19_Konrad</string>
+    <string name="deaths">Deaths</string>
+    <string name="number_of_recovered">Number of Recovered</string>
+    <string name="cases">Cases</string>
+    <string name="number_of_cases">Number of Cases</string>
+    <string name="Cases">Cases</string>
+    <string name="number_of_deaths">Number of Deaths</string>
+    <string name="statename">StateName</string>
+    <string name="indian_record">Indian Record</string>
+    <string name="Number_of_Recovered">Number of Recovered</string>
+    <string name="world_wide_record">World Wide Record</string>
 </resources>
