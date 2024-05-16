@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:padding="4dp"
-                    android:text="@string/Cases"
+                    android:text="Recovered"
                     android:textAlignment="center"
                     android:textColor="@color/green"
                     android:textSize="15sp"
@@ -204,7 +204,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:padding="4dp"
-                        android:text="@string/Cases"
+                        android:text="Recovered"
                         android:textAlignment="center"
                         android:textColor="@color/green"
                         android:textSize="15sp"
@@ -259,7 +259,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:text="Expand/Collapse"
-                android:backgroundTint="#00FF00"
                 />
 
         </LinearLayout>

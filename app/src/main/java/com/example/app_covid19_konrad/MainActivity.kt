@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         val resetButton: Button = findViewById(R.id.reset_button) //dodanie przycisku do resetu
         val expandCollapseButton: Button = findViewById(R.id.expand_collapse_button)
         var isListExpanded = false
-        expandCollapseButton.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN))
+        //expandCollapseButton.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN))
 
         resetButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -149,34 +149,24 @@ class MainActivity : AppCompatActivity() {
             })
         queue.add(request)
     }
-    /*
+
     private fun getWorldInfo() // podobnie jak powyżej uzupełnić funkcje (poszukuje odpowiedniego Api)
     {
-        val url = "https://corona.lmao.ninja/v3/covid-19/all"
-        //???
+        val url = "None"
+
     }
-     */
+
 
     override fun onStop() {
         super.onStop()
         // Zapisz dane do bazy danych lub pliku
-        findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
-            getStateInfo()// kiedy klikne pobieraj sie informacje o
-        }
-        findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
-            //getStateInfo()// kiedy klikne pobieraj sie informacje o
-        }
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         // Zwolnij zasoby
-        findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
-            getStateInfo()// kiedy klikne pobieraj sie informacje o
-        }
-        findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
-            //getStateInfo()// kiedy klikne pobieraj sie informacje o
-        }
+
     }
 
 }

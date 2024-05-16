@@ -80,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:padding="4dp"
-                        android:text="@string/Cases"
+                        android:text="Recovered"
                         android:textAlignment="center"
                         android:textColor="@color/green"
                         android:textSize="15sp"
