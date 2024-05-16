@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
 import org.json.JSONObject
@@ -152,8 +153,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun getWorldInfo() // podobnie jak powyżej uzupełnić funkcje (poszukuje odpowiedniego Api)
     {
-        val url = "None"
+        val url = "https://covid-193.p.rapidapi.com/statistics"
 
+        val queue = Volley.newRequestQueue(this)
+
+        val request = object : StringRequest(
+            Request.Method.GET, url,
+            { response ->
+                // Parse the JSON response and update the UI
+            },
+            { error ->
+                // Handle error
+            }
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["X-RapidAPI-Key"] = "9a9c2ee830msh1d67666a060a413p1b0636jsnc4f6d9b68998"
+                headers["X-RapidAPI-Host"] = "covid-193.p.rapidapi.com"
+                return headers
+            }
+        }
+
+        queue.add(request)
     }
 
 
