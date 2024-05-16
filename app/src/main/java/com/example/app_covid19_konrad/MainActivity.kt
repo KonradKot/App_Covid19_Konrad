@@ -2,8 +2,11 @@ package com.example.app_covid19_konrad
 
 import android.app.DownloadManager
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -39,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val resetButton: Button = findViewById(R.id.reset_button) //dodanie przycisku do resetu
+        val expandCollapseButton: Button = findViewById(R.id.expand_collapse_button)
+        var isListExpanded = false
+        expandCollapseButton.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN))
 
         resetButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -47,6 +53,34 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        expandCollapseButton.setOnClickListener {
+            if (isListExpanded) {
+                // Collapse the list
+                stateRV.visibility = View.GONE
+                expandCollapseButton.text = "Expand"
+                expandCollapseButton.animate()
+                    .setDuration(200) // Duration of the animation in milliseconds
+                    .withEndAction {
+                        // Change the button's background color to green after the animation ends
+                        expandCollapseButton.setBackgroundColor(Color.GREEN)
+                    }
+                    .start()
+            } else {
+                // Expand the list
+                stateRV.visibility = View.VISIBLE
+                expandCollapseButton.text = "Collapse"
+                expandCollapseButton.animate()
+                    .setDuration(200) // Duration of the animation in milliseconds
+                    .withEndAction {
+                        // Change the button's background color to green after the animation ends
+                        expandCollapseButton.setBackgroundColor(Color.RED)
+                    }
+                    .start()
+            }
+            isListExpanded = !isListExpanded
+            // Animate the button's background color
+
+        }
 
         worlCasesTV = findViewById(R.id.idTVWorldCases)
         worldDeathsTV = findViewById(R.id.idTVWorldDeaths)
@@ -65,7 +99,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
             //getStateInfo()// kiedy klikne pobieraj sie informacje o
         }
-
 
     }
 
@@ -114,6 +147,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT)
                 }
             })
+        queue.add(request)
     }
     /*
     private fun getWorldInfo() // podobnie jak powyżej uzupełnić funkcje (poszukuje odpowiedniego Api)
@@ -123,6 +157,26 @@ class MainActivity : AppCompatActivity() {
     }
      */
 
+    override fun onStop() {
+        super.onStop()
+        // Zapisz dane do bazy danych lub pliku
+        findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
+            getStateInfo()// kiedy klikne pobieraj sie informacje o
+        }
+        findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
+            //getStateInfo()// kiedy klikne pobieraj sie informacje o
+        }
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        // Zwolnij zasoby
+        findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
+            getStateInfo()// kiedy klikne pobieraj sie informacje o
+        }
+        findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
+            //getStateInfo()// kiedy klikne pobieraj sie informacje o
+        }
+    }
 
 }
