@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -147,28 +146,15 @@ class MainActivity : AppCompatActivity() {
             })
         queue.add(request)
     }
+
     private fun getWorldInfo() // podobnie jak powyżej uzupełnić funkcje (poszukuje odpowiedniego Api)
     {
-        val url = "https://covid-193.p.rapidapi.com/history?country=usa&day=2020-06-02"
-            .addHeader("X-RapidAPI-Key", "9a9c2ee830msh1d67666a060a413p1b0636jsnc4f6d9b68998")
-            .addHeader("X-RapidAPI-Host", "covid-193.p.rapidapi.com")
-        val queue = Volley.newRequestQueue(this@MainActivity)
-        val request =
-            JsonObjectRequest(Request.Method.GET, url, null, { response ->
-                try { // tu pobieram konkretne dane z API, które chcę wyswietlić
 
-
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-
-                }
-            }, { error ->
-                {
-                    Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT)
-                }
-            })
-        queue.add(request)
     }
+
+
+
+
 
 
     override fun onStop() {
