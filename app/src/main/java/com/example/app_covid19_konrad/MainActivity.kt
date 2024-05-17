@@ -1,8 +1,6 @@
 package com.example.app_covid19_konrad
 
-import android.app.DownloadManager
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -10,15 +8,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity // dodałem stworzoną klasę, któą zimportowałem w dependencies
-import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -151,32 +147,26 @@ class MainActivity : AppCompatActivity() {
             })
         queue.add(request)
     }
-
     private fun getWorldInfo() // podobnie jak powyżej uzupełnić funkcje (poszukuje odpowiedniego Api)
     {
-        val url = "https://covid-193.p.rapidapi.com/statistics"
+        val url = "https://covid-193.p.rapidapi.com/history?country=usa&day=2020-06-02"
+            .addHeader("X-RapidAPI-Key", "9a9c2ee830msh1d67666a060a413p1b0636jsnc4f6d9b68998")
+            .addHeader("X-RapidAPI-Host", "covid-193.p.rapidapi.com")
+        val queue = Volley.newRequestQueue(this@MainActivity)
+        val request =
+            JsonObjectRequest(Request.Method.GET, url, null, { response ->
+                try { // tu pobieram konkretne dane z API, które chcę wyswietlić
 
-        val queue = Volley.newRequestQueue(this)
 
-        val request = object : StringRequest(
-            Request.Method.GET, url,
-            { response ->
-                // Parse the JSON response and update the UI
-            },
-            { error ->
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+
+                }
+            }, { error ->
                 {
                     Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT)
                 }
-            }
-        ) {
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers["X-RapidAPI-Key"] = "9a9c2ee830msh1d67666a060a413p1b0636jsnc4f6d9b68998"
-                headers["X-RapidAPI-Host"] = "covid-193.p.rapidapi.com"
-                return headers
-            }
-        }
-
+            })
         queue.add(request)
     }
 
