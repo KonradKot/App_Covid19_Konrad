@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var stateList: List<StateModel>
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             getStateInfo()// kiedy klikne pobieraj sie informacje o
         }
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
-            //getStateInfo()// kiedy klikne pobieraj sie informacje o
+            getWorldInfo()// kiedy klikne pobieraj sie informacje o
         }
 
     }
@@ -163,7 +164,9 @@ class MainActivity : AppCompatActivity() {
                 // Parse the JSON response and update the UI
             },
             { error ->
-                // Handle error
+                {
+                    Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT)
+                }
             }
         ) {
             override fun getHeaders(): MutableMap<String, String> {
