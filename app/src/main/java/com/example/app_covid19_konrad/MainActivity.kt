@@ -1,6 +1,8 @@
 package com.example.app_covid19_konrad
 
+
 import android.content.Intent
+
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -9,15 +11,18 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
+
 
     lateinit var worlCasesTV: TextView
     lateinit var worldRecoveredTV: TextView
@@ -30,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var stateRV: RecyclerView
     lateinit var stateRVAdapter: StateRVAdapter
     lateinit var stateList: List<StateModel>
+
 
 
 
@@ -77,6 +83,7 @@ class MainActivity : AppCompatActivity() {
             isListExpanded = !isListExpanded
             // Animate the button's background color
 
+
         }
 
         worlCasesTV = findViewById(R.id.idTVWorldCases)
@@ -96,6 +103,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
             getWorldInfo()// kiedy klikne pobieraj sie informacje o
         }
+
 
     }
 
@@ -153,10 +161,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
     override fun onStop() {
         super.onStop()
         // Zapisz dane do bazy danych lub pliku
@@ -169,4 +173,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+
+     // usun ta petle
 }
