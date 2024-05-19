@@ -64,6 +64,12 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0") // biblioteka zapewniająca komponenty Material Design
     implementation("androidx.constraintlayout:constraintlayout:2.1.4") // biblioteka zapewniająca obsługe constraint layout
 
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    val moshi_version = "1.14.0"
+    implementation("com.squareup.moshi:moshi:$moshi_version")
+    implementation("com.squareup.moshi:moshi-kotlin:$moshi_version")
+    //kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi_version")
 
 
     implementation(libs.androidx.core.ktx)
