@@ -24,6 +24,7 @@ import org.json.JSONObject
 class MainActivity : AppCompatActivity() {
 
 
+
     lateinit var worlCasesTV: TextView
     lateinit var worldRecoveredTV: TextView
     lateinit var worldDeathsTV: TextView
@@ -147,17 +148,53 @@ class MainActivity : AppCompatActivity() {
 
                 }
             }, { error ->
-                {
                     Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT)
-                }
             })
         queue.add(request)
     }
 
-    private fun getWorldInfo() // podobnie jak powyżej uzupełnić funkcje (poszukuje odpowiedniego Api)
-    {
+    private fun getWorldInfo() {
+        val url = "https://covid-193.p.rapidapi.com/statistics?country=europe"
+        val requestQueue = Volley.newRequestQueue(this@MainActivity)
 
+        val jsonObjectRequest = object : JsonObjectRequest(Request.Method.GET, url, null, { response ->
+            try {
+                val data = response.getJSONArray("response")
+                // Extract the data from the "response" object
+                //val continent = response.getString("continent")
+                //val country = response.getString("country")
+                val cases= data.getJSONObject(0).getJSONObject("cases").getLong("total").toInt()
+                val deaths:Int = data.getJSONObject(0).getJSONObject("deaths").getLong("total").toInt()
+                val recovered:Int = data.getJSONObject(0).getJSONObject("cases").getLong("recovered").toInt()
+
+                println("Cases: $cases")
+                println("Deaths: $deaths")
+                println("Recovered: $recovered")
+
+                worlCasesTV.text = cases.toString()
+                worldDeathsTV.text = deaths.toString()
+                worldRecoveredTV.text = recovered.toString()
+
+                Log.w("MainActivity", "onCreate:")
+
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+        }, { error ->
+            Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+        }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["X-RapidAPI-Key"] = "9a9c2ee830msh1d67666a060a413p1b0636jsnc4f6d9b68998"
+                headers["X-RapidAPI-Host"] = "covid-193.p.rapidapi.com"
+                return headers
+            }
+        }
+        Log.d("JSON_DATA", jsonObjectRequest.toString())
+        requestQueue.add(jsonObjectRequest)
     }
+
+
 
 
     override fun onStop() {
