@@ -27,7 +27,7 @@
                 android:layout_margin="3dp"
                 android:gravity="center_horizontal"
                 android:padding="3dp"
-                android:text="Europe Record"
+                android:text="World Record"
                 android:textAlignment="center"
                 android:textColor="@color/pink_500"
                 android:textSize="18sp" />
@@ -151,7 +151,7 @@
                 android:layout_margin="3dp"
                 android:gravity="center_horizontal"
                 android:padding="3dp"
-                android:text="@string/indian_record"
+                android:text="Europe Record Countries"
                 android:textAlignment="center"
                 android:textColor="@color/pink_500"
                 android:textSize="18sp" />
@@ -278,7 +278,7 @@
             android:id="@+id/get_data_btn_wor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GET EUROPE" />
+            android:text="GET WORLD" />
         <Button
             android:id="@+id/get_data_btn_reg"
             android:layout_width="match_parent"
@@ -295,7 +295,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/date_text_view"
+            android:layout_gravity="right|bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="date?" />
+
 
     </LinearLayout>
 

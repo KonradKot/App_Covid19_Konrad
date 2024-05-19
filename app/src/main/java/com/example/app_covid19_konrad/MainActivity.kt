@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var stateRVAdapter: StateRVAdapter
     lateinit var stateList: List<StateModel>
 
+    lateinit var dateText: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,6 +98,8 @@ class MainActivity : AppCompatActivity() {
         stateRV = findViewById(R.id.idRVStates)
         stateList = ArrayList<StateModel>()
 
+        dateText = findViewById(R.id.date_text_view) // dodac przycisk!
+
         findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
             getStateInfo()// kiedy klikne pobieraj sie informacje o
         }
@@ -109,25 +112,33 @@ class MainActivity : AppCompatActivity() {
 
     private fun getStateInfo() // tu podaje zrodło API
     {
-        //val url = "https://api.covid19india.org/data.json"
-        val url = "https://api.rootnet.in/covid19-in/stats/latest"
+        val euCountries = listOf(
+            "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia",
+            "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania",
+            "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia",
+            "Spain", "Sweden"
+        )
+        val url = "https://covid-193.p.rapidapi.com/statistics"
         val queue = Volley.newRequestQueue(this@MainActivity)
-        val request =
-            JsonObjectRequest(Request.Method.GET, url, null, { response ->
+        val request = object: JsonObjectRequest(Request.Method.GET, url, null, { response ->
                 try { // tu pobieram konkretne dane z API, które chcę wyswietlić
-                    val dataObj = response.getJSONObject("data")
-                    val summaryObj = dataObj.getJSONObject("summary")
-                    val cases: Int = summaryObj.getInt("total")
-                    val deaths: Int = summaryObj.getInt("deaths")
-                    val recovered: Int = summaryObj.getInt("discharged")
+                    val dataObj = response.getJSONArray("response").getJSONObject(218)
+                    //val summaryObj = dataObj.getJSONObject("summary")
+                    val cases: Int = dataObj.getJSONObject("cases").getLong("total").toInt()
+                    val deaths: Int = dataObj.getJSONObject("deaths").getLong("total").toInt()
+                    val recovered: Int = dataObj.getJSONObject("cases").getLong("recovered").toInt()
+                    val date: String = dataObj.getString("day")
 
                     countryCasesTV.text = cases.toString()
                     countryRecoveredTV.text = recovered.toString()
                     countryDeathsTV.text = deaths.toString()
+                    dateText.text = date.toString()
+
 
                     val regionalArray =
-                        dataObj.getJSONArray("regional") // pobranie danych regionalnie
+                        response.getJSONArray("response") // pobranie danych regionalnie
                     for (i in 0 until regionalArray.length()) {
+                        if (regionalArray[i] !is JSONObject)
                         val regionalObj = regionalArray[i] as JSONObject // castowanie do JSONObject]
                         val stateModel = StateModel(
                             regionalObj.getString("loc"),
@@ -141,39 +152,39 @@ class MainActivity : AppCompatActivity() {
                     stateRV.layoutManager = LinearLayoutManager(this)
                     stateRV.adapter = stateRVAdapter
 
-                    Log.w("MainActivity", "onCreate:")
-
                 } catch (e: JSONException) {
                     e.printStackTrace()
-
                 }
             }, { error ->
-                    Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT)
-            })
+                Toast.makeText(this@MainActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+            }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers["X-RapidAPI-Key"] = "9a9c2ee830msh1d67666a060a413p1b0636jsnc4f6d9b68998"
+                    headers["X-RapidAPI-Host"] = "covid-193.p.rapidapi.com"
+                    return headers
+                }
+            }
+        Log.w("MainActivity", "onCreate:")
         queue.add(request)
     }
 
     private fun getWorldInfo() {
-        val url = "https://covid-193.p.rapidapi.com/statistics?country=europe"
+        val url = "https://covid-193.p.rapidapi.com/statistics?country=all"
         val requestQueue = Volley.newRequestQueue(this@MainActivity)
 
         val jsonObjectRequest = object : JsonObjectRequest(Request.Method.GET, url, null, { response ->
             try {
                 val data = response.getJSONArray("response")
-                // Extract the data from the "response" object
-                //val continent = response.getString("continent")
-                //val country = response.getString("country")
                 val cases= data.getJSONObject(0).getJSONObject("cases").getLong("total").toInt()
                 val deaths:Int = data.getJSONObject(0).getJSONObject("deaths").getLong("total").toInt()
                 val recovered:Int = data.getJSONObject(0).getJSONObject("cases").getLong("recovered").toInt()
 
-                println("Cases: $cases")
-                println("Deaths: $deaths")
-                println("Recovered: $recovered")
 
                 worlCasesTV.text = cases.toString()
                 worldDeathsTV.text = deaths.toString()
                 worldRecoveredTV.text = recovered.toString()
+
 
                 Log.w("MainActivity", "onCreate:")
 
