@@ -286,7 +286,7 @@
             android:text="GET REGIONAL" />
 
         <Button
-            android:id="@+id/stats_button"
+            android:id="@+id/image_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Show Image" />

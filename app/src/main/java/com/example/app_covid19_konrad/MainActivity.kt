@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var dateText: TextView
 
-    lateinit var stats_button: Button
+    lateinit var image_button: Button
 
 
 
@@ -98,7 +98,6 @@ class MainActivity : AppCompatActivity() {
         stateList = ArrayList<StateModel>()
 
         dateText = findViewById(R.id.date_text_view) // dodac przycisk!
-        stats_button = findViewById(R.id.stats_button) // przycisk do statystyk
 
         findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
             getStateInfo()// kiedy klikne pobieraj sie informacje o
