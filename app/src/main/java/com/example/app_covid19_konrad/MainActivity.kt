@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var stats_button: Button
 
+    private fun showStats() {
+        val intent = Intent(this, StatsActivity::class.java)
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -105,13 +110,10 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
             getStateInfo()// kiedy klikne pobieraj sie informacje o
+            getEuCountryStats()
         }
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
             getWorldInfo()// kiedy klikne pobieraj sie informacje o
-        }
-        stats_button.setOnClickListener {
-            val intent = Intent(this, StatsActivity::class.java)
-            startActivity(intent)
         }
 
 
