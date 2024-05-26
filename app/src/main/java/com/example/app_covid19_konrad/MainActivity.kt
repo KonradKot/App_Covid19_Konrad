@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -114,6 +115,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
             getWorldInfo()// kiedy klikne pobieraj sie informacje o
         }
+        val showImageButton = findViewById<Button>(R.id.stats_button)
+        showImageButton.setOnClickListener {
+            // Create an intent to launch the ImageActivity
+            val intent = Intent(this, ImageActivity::class.java)
+
+            // Start the ImageActivity
+            startActivity(intent)
+        }
+
 
     }
 
