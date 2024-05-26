@@ -2,27 +2,20 @@ package com.example.app_covid19_konrad
 
 
 import android.content.Intent
-
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
-import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -91,7 +84,6 @@ class MainActivity : AppCompatActivity() {
             isListExpanded = !isListExpanded
             // Animate the button's background color
 
-
         }
 
         worlCasesTV = findViewById(R.id.idTVWorldCases)
@@ -114,14 +106,6 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
             getWorldInfo()// kiedy klikne pobieraj sie informacje o
-        }
-        val showImageButton = findViewById<Button>(R.id.stats_button)
-        showImageButton.setOnClickListener {
-            // Create an intent to launch the ImageActivity
-            val intent = Intent(this, ImageActivity::class.java)
-
-            // Start the ImageActivity
-            startActivity(intent)
         }
 
 
@@ -154,19 +138,7 @@ class MainActivity : AppCompatActivity() {
 
                     val regionalArray =
                         response.getJSONArray("response") // pobranie danych regionalnie
-                    /*
-                    for (i in 0 until regionalArray.length()) {
-                        val regionalObj = regionalArray.getJSONObject(i)
-                        val stateName = regionalObj.getString("loc")
-                        val cases: Int = regionalObj.getInt("totalConfirmed")
-                        val deaths: Int = regionalObj.getInt("totalDeaths")
-                        val recovered: Int = regionalObj.getInt("totalRecovered")
 
-                        val stateModel = StateModel(stateName, cases, deaths, recovered)
-                        stateList = stateList + stateModel
-
-                    }
-                     */
                     for (i in 0 until 238) {
                         val regionalObj = regionalArray.getJSONObject(i)
                         val stateName = regionalObj.getString("country")

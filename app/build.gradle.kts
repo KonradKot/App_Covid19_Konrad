@@ -42,6 +42,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -63,7 +64,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.13.1") // biblioteka rozszerzeń dla podstawowych funkcji Androida
     implementation("com.android.volley:volley:1.2.1") // biblioteka do obsługi API REST, żądań HTTP
     implementation("androidx.appcompat:appcompat:1.6.1") // biblioteka zapewniająca obsługe starszych wersji Androida
-    implementation("com.google.android.material:material:1.12.0") // biblioteka zapewniająca komponenty Material Design
+    implementation("com.google.android.material:material:1.9.0") // biblioteka zapewniająca komponenty Material Design
     implementation("androidx.constraintlayout:constraintlayout:2.1.4") // biblioteka zapewniająca obsługe constraint layout
 
     //implementation("com.squareup.retrofit2:retrofit:2.10.0")
@@ -85,10 +86,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
-    /*
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.compose.preview.renderer)
-     */
+    implementation(libs.androidx.recyclerview)
+
+    //implementation(libs.androidx.lifecycle.viewmodel.compose)
+    //implementation(libs.compose.preview.renderer)
+
     testImplementation(libs.junit)
 
 
