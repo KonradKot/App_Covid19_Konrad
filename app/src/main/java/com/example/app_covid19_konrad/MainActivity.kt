@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
             getStateInfo()// kiedy klikne pobieraj sie informacje o
-            getEuCountryStats()
+            
         }
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
             getWorldInfo()// kiedy klikne pobieraj sie informacje o
