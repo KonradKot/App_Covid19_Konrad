@@ -106,6 +106,16 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
             getWorldInfo()// kiedy klikne pobieraj sie informacje o
         }
+        val showImageButton = findViewById<Button>(R.id.image_button)
+
+        // Set a click listener on the button
+        showImageButton.setOnClickListener {
+            // Create an intent to start the ImageActivity
+            val intent = Intent(this, ImageActivity::class.java)
+
+            // Start the ImageActivity
+            startActivity(intent)
+        }
 
 
     }
