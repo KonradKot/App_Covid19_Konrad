@@ -117,12 +117,12 @@ class MainActivity : AppCompatActivity() {
             "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania",
             "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia",
             "Spain", "Sweden"
-        )
+        ) // kraje EU
         val url = "https://covid-193.p.rapidapi.com/statistics"
         val queue = Volley.newRequestQueue(this@MainActivity)
         val request = object: JsonObjectRequest(Request.Method.GET, url, null, { response ->
                 try { // tu pobieram konkretne dane z API, które chcę wyswietlić
-                    val dataObj = response.getJSONArray("response").getJSONObject(218)
+                    val dataObj = response.getJSONArray("response").getJSONObject(203)
                     //val summaryObj = dataObj.getJSONObject("summary")
                     val cases: Int = dataObj.getJSONObject("cases").getLong("total").toInt()
                     val deaths: Int = dataObj.getJSONObject("deaths").getLong("total").toInt()
@@ -137,17 +137,37 @@ class MainActivity : AppCompatActivity() {
 
                     val regionalArray =
                         response.getJSONArray("response") // pobranie danych regionalnie
+                    /*
                     for (i in 0 until regionalArray.length()) {
-                        if (regionalArray[i] !is JSONObject)
-                        val regionalObj = regionalArray[i] as JSONObject // castowanie do JSONObject]
-                        val stateModel = StateModel(
-                            regionalObj.getString("loc"),
-                            regionalObj.getInt("discharged"),
-                            regionalObj.getInt("deaths"),
-                            regionalObj.getInt("totalConfirmed")
-                        )
-                        stateList += stateModel
+                        val regionalObj = regionalArray.getJSONObject(i)
+                        val stateName = regionalObj.getString("loc")
+                        val cases: Int = regionalObj.getInt("totalConfirmed")
+                        val deaths: Int = regionalObj.getInt("totalDeaths")
+                        val recovered: Int = regionalObj.getInt("totalRecovered")
+
+                        val stateModel = StateModel(stateName, cases, deaths, recovered)
+                        stateList = stateList + stateModel
+
                     }
+                     */
+                    for (i in 0 until 200) {
+                        val regionalObj = regionalArray.getJSONObject(i)
+                        val stateName = regionalObj.getString("country")
+                        val continentName = regionalObj.getString("continent")
+                        if (stateName in euCountries && continentName == "Europe") { // Check if the state belongs to the EU
+                            val cases: Int = regionalObj.getJSONObject("cases").getLong("total").toInt()
+                            val deaths: Int = regionalObj.getJSONObject("deaths").getLong("total").toInt()
+                            val recovered: Int = try {
+                                regionalObj.getJSONObject("cases").getLong("recovered").toInt()
+                            } catch (e: JSONException) {
+                                0 // Set recovered to 0 if the value is null
+                            }
+
+                            val stateModel = StateModel(stateName, cases, deaths, recovered)
+                            stateList = stateList + stateModel
+                        }
+                    }
+
                     stateRVAdapter = StateRVAdapter(stateList)
                     stateRV.layoutManager = LinearLayoutManager(this)
                     stateRV.adapter = stateRVAdapter
