@@ -70,9 +70,7 @@ dependencies {
     //implementation("com.squareup.moshi:moshi:$moshi_version")
     //implementation("com.squareup.moshi:moshi-kotlin:$moshi_version")
     //kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi_version")
-    implementation("com.github.lecho:hellocharts-library:1.5.8@aar") // do wykresów graficznych
-    //implementation("com.squareup.retrofit2:retrofit:2.10.0")
-    //implementation("com.squareup.retrofit2:converter-moshi:2.10.0")
+
 
 
 
