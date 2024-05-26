@@ -285,6 +285,11 @@
             android:layout_height="wrap_content"
             android:text="GET REGIONAL" />
 
+        <Button
+            android:id="@+id/stats_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Stats" />
 
         <Button
             android:id="@+id/reset_button"

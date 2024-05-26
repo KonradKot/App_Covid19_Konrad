@@ -39,6 +39,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var dateText: TextView
 
+    lateinit var stats_button: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -99,12 +101,17 @@ class MainActivity : AppCompatActivity() {
         stateList = ArrayList<StateModel>()
 
         dateText = findViewById(R.id.date_text_view) // dodac przycisk!
+        stats_button = findViewById(R.id.stats_button) // przycisk do statystyk
 
         findViewById<Button>(R.id.get_data_btn_reg).setOnClickListener {
             getStateInfo()// kiedy klikne pobieraj sie informacje o
         }
         findViewById<Button>(R.id.get_data_btn_wor).setOnClickListener {
             getWorldInfo()// kiedy klikne pobieraj sie informacje o
+        }
+        stats_button.setOnClickListener {
+            val intent = Intent(this, StatsActivity::class.java)
+            startActivity(intent)
         }
 
 
@@ -150,7 +157,7 @@ class MainActivity : AppCompatActivity() {
 
                     }
                      */
-                    for (i in 0 until 200) {
+                    for (i in 0 until 238) {
                         val regionalObj = regionalArray.getJSONObject(i)
                         val stateName = regionalObj.getString("country")
                         val continentName = regionalObj.getString("continent")
@@ -162,7 +169,6 @@ class MainActivity : AppCompatActivity() {
                             } catch (e: JSONException) {
                                 0 // Set recovered to 0 if the value is null
                             }
-
                             val stateModel = StateModel(stateName, cases, deaths, recovered)
                             stateList = stateList + stateModel
                         }
@@ -244,3 +250,5 @@ class MainActivity : AppCompatActivity() {
 
      // usun ta petle
 }
+
+
