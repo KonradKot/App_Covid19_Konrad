@@ -303,7 +303,15 @@
             android:id="@+id/image_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:text="Play Game" />
+
+        <Button
+            android:id="@+id/quiz_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Chart" />
 
         <Button
             android:id="@+id/reset_button"
