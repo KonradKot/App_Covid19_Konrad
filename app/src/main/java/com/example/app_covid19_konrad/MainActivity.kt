@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
             // Start the ImageActivity
             startActivity(intent)
         }
-        val showQuizButton = findViewById<Button>(R.id.quiz_button)
+        val showQuizButton = findViewById<Button>(R.chart_button)
         showQuizButton.setOnClickListener {
             // Create an intent to start the ImageActivity
             val intent = Intent(this,ChartActivity::class.java)
